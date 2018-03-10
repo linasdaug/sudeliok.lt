@@ -89,6 +89,7 @@ function isdelioti(image) {
         // }
     }
 
+
     let resize = w / image.width;   /* originali nuotrauka vis dar seno dydzio, reikalingas koeficientas perskaiciavimui*/
 
     let k = 0;
@@ -152,22 +153,22 @@ function isdelioti(image) {
 
         let infoSelectOpt1 = document.createElement("option");
         infoSelectOpt1.innerHTML = "vienas-du ir baigta";
-        infoSelectOpt1.setAttribute("value", 6);
+        infoSelectOpt1.setAttribute("value", 5);
         infoSelect.appendChild(infoSelectOpt1);
 
         let infoSelectOpt2 = document.createElement("option");
         infoSelectOpt2.innerHTML = "lengvai";
-        infoSelectOpt2.setAttribute("value", 7);
+        infoSelectOpt2.setAttribute("value", 6);
         infoSelect.appendChild(infoSelectOpt2);
 
         let infoSelectOpt3 = document.createElement("option");
         infoSelectOpt3.innerHTML = "vidutiniškai";
-        infoSelectOpt3.setAttribute("value", 8);
+        infoSelectOpt3.setAttribute("value", 7);
         infoSelect.appendChild(infoSelectOpt3);
 
         let infoSelectOpt4 = document.createElement("option");
         infoSelectOpt4.innerHTML = "sudėtingai";
-        infoSelectOpt4.setAttribute("value", 9);
+        infoSelectOpt4.setAttribute("value", 8);
         infoSelect.appendChild(infoSelectOpt4);
 
         let infoSelectOpt5 = document.createElement("option");
@@ -206,7 +207,6 @@ function isdelioti(image) {
 
 
     let maxHeight = screen.height - 20 - (langelioAukstis * langeliuSk_H) - updownOffset*2;
-    console.log(maxHeight);
 
     darboStalas.style.maxHeight = maxHeight + "px";
     darboStalas.style.minHeight = langelioAukstis * 2 + 10 + "px";
@@ -335,6 +335,15 @@ function intro(x) {
     grizti.setAttribute("class", "grizti");
     puslapis.appendChild(grizti);
 
+    let origNuoroda = document.createElement("a");
+    origNuoroda.innerHTML = "Paslėpti originalą";
+    origNuoroda.setAttribute("id", "origNuoroda");
+    origNuoroda.setAttribute("onclick", "originalas()");
+    origNuoroda.setAttribute("class", "grizti");
+    puslapis.appendChild(origNuoroda);
+
+
+
     let dezes = document.createElement("div");
     dezes.setAttribute("class", "dezes");
     puslapis.appendChild(dezes);
@@ -359,6 +368,7 @@ function intro(x) {
     detales.setAttribute("id", "detales");
     detales.setAttribute("ondrop", "padetiIVieta(event)");
     detales.setAttribute("ondragover", "leisti(event)");
+    detales.setAttribute("onclick", "sugrazinti(event)");
     dezes.appendChild(detales);
     zaidimasMode = false;
     let image = new Image();
@@ -405,6 +415,17 @@ function zaidimas() {
         image.onload = function(){
             isdelioti(image);
         }
+}
 
+function originalas() {
+    let flyer = document.getElementById("visa-nuotrauka");
+    flyer.classList.toggle("visa-nuotrauka-rodoma");
+
+    let origNuoroda = document.getElementById("origNuoroda");
+    if (origNuoroda.innerHTML == "Parodyti originalą") {
+        origNuoroda.innerHTML = "Paslėpti originalą";
+    } else {
+        origNuoroda.innerHTML = "Parodyti originalą";
+    }
 
 }

@@ -86,6 +86,7 @@ function pazymeti(event) {
     } else {
         event.target.classList.add("pazymetas");
     }
+    event.stopPropagation();
 }
 
 function permesti(event) {
@@ -103,4 +104,17 @@ function permesti(event) {
         event.target.classList.add("pilnas");
         pazymetas[0].classList.remove("pazymetas");
     }
+}
+
+function sugrazinti(event) {
+
+    let pazymetas = document.getElementsByClassName("pazymetas");
+    if (pazymetas[0]) {
+        pazymetas[0].classList.remove("padetas");
+        pazymetas[0].classList.add("palaidas");
+        pazymetas[0].parentElement.classList.remove("pilnas");
+        if (event.target.classList.contains("deze")) {event.target.appendChild(pazymetas[0]);};
+        pazymetas[0].classList.remove("pazymetas");
+    } else {return;}
+    // event.stopPropagation();
 }
