@@ -1,0 +1,202 @@
+* {
+    box-sizing: border-box;
+    font-family: "Open Sans";
+}
+
+body {
+    background: url('img/fonelis.jpg') repeat;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.titulinis-heading {
+    width: 100%;
+    margin: 25px 0;
+    background-color: rgba(250,235,215, 0.7);
+    text-align: center;
+}
+
+.titulinis-heading h1 {
+    color: grey;
+    padding: 25px;
+}
+
+.titulinis-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.titulinis-thumbnail {
+    background-color: rgba(250,235,215, 0.7);
+    text-align: center;
+    color: grey;
+    box-shadow: 2px 2px 2px grey;
+    margin: 25px;
+    cursor: pointer;
+}
+
+.titulinis-thumbnail img {
+    width: 95%;
+    max-width: 200px;
+    margin: 10px;
+}
+
+.titulinis-thumbnail h4 {
+    padding: 10px;
+}
+
+
+#visa-nuotrauka {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 25%;
+    transform: scale(0.5, 0.5);
+    transition: transform 1s;
+    transition-delay: 0.5s;
+    z-index: 2;
+}
+
+#visa-nuotrauka:hover {
+    transform: scale(1.5, 1.5);
+}
+
+.susitraukusi {
+    width: 50px;
+}
+
+.pavyzdys h2 {
+    padding-top: 25px;
+}
+
+.dezes {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.stalas-container {
+    min-width: 400px;
+    min-height: 400px;
+    position: relative;
+    margin: 50px 25px;
+}
+
+.stalas-container img {
+    width: 100%;
+}
+
+.stalas {
+    position: absolute;
+    min-width: 360px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+
+.stalas, .deze {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.deze {
+    align-items: flex-start;
+}
+
+.palaidas {
+    height: 60px;
+    margin: 2px;
+    transition: all 0.5s;
+}
+
+.palaidas:hover {
+    transform: scale(1.5, 1.5);
+}
+
+.padetas {
+    position: absolute;
+    top: -9px;
+    left: -9px;
+    z-index: 1;
+}
+
+.pazymetas.palaidas {
+    transform: scale(1.5, 1.5);
+}
+
+.pazymetas {
+    background-color: rgba(0, 100, 100, 0.07);
+}
+
+.langelis {
+    border: 1px dotted antiquewhite;
+    position: relative;
+}
+
+#footer {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.footer-info {
+    padding: 25px;
+    color: grey;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-info ul li {
+    list-style-type: none;
+}
+
+
+.grizti {
+    cursor: pointer;
+}
+
+.intro-info {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 60px;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.intro-info h2 {
+    text-align: center;
+}
+
+select option {
+    background-color: orchid;
+    color: antiquewhite;
+    font-style: italic;
+}
+
+select option:active{
+    background-color: brown;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .container {
+        width: 100%;
+    }
