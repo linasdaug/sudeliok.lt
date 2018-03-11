@@ -12,6 +12,10 @@ a {
     color: inherit;
 }
 
+ul {
+    padding: 0;
+}
+
 .container {
     width: 80%;
     margin: 0 auto;
@@ -59,17 +63,17 @@ a {
 
 #visa-nuotrauka {
     position: fixed;
-    top: 0;
+    top: 20%;
     left: 50%;
     width: 25%;
     transform: scale(0.5, 0.5);
-    transition: transform 1s;
+    transition: transform 0.8s;
     transition-delay: 0.5s;
     z-index: 2;
 }
 
 #visa-nuotrauka:hover {
-    transform: scale(1.5, 1.5);
+    transform: scale(2, 2);
 }
 
 .visa-nuotrauka-rodoma {
@@ -169,8 +173,14 @@ a {
 
 .footer-info ul li {
     list-style-type: none;
+    display: inline;
+    margin: 5px 10px;
 }
 
+.info {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 30px;
+}
 
 .grizti {
     cursor: pointer;
@@ -184,23 +194,27 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 30px 60px;
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
 }
 
 .intro-info h2 {
     text-align: center;
 }
 
+select {
+    border-radius: 5px;
+}
+
 select option {
-    background-color: orchid;
-    color: antiquewhite;
+    background-color: #c2c202;
+    color: black;
     font-style: italic;
 }
 
 select option:active{
     background-color: brown;
-    color: white;
+    color: antiquewhite;
 }
 
 @media only screen and (max-width: 600px) {
