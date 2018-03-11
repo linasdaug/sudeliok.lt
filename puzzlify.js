@@ -1,4 +1,15 @@
-let collectionLT = ["img/lt/gedimino.jpg", "img/lt/trispalve.jpg", "img/lt/ona.jpg", "img/lt/naktis.jpg", "img/lt/litai.jpg", "img/lt/trakai.jpg", "img/lt/kaunas.jpg", "img/lt/zemelapis.jpg", "img/lt/fanes.jpg"];
+let collectionLT = [
+    "img/lt/gedimino.jpg",
+    "img/lt/trispalve.jpg",
+    "img/lt/ona.jpg",
+    "img/lt/zemelapis.jpg",
+    "img/lt/naktis.jpg",
+    "img/lt/herbas.jpg",
+    "img/lt/litai.jpg",
+    "img/lt/trakai.jpg",
+    "img/lt/kaunas.jpg",
+    "img/lt/fanes.jpg"];
+    
 let collection = ["img/neuschwanstein.jpg", "img/venecija.jpg", "img/drasa.jpg", "img/katinas.jpg", "img/ramybe.jpg", "img/siela.jpg", "img/tajmahal.jpg", "img/geisha.jpg"];
 let imagePaths = collection;
 let currentImage = 0;
@@ -43,8 +54,8 @@ function isdelioti(image) {
     let langeliuSk_W, langeliuSk_H;
 
 
-    if (proporcija <= 1) {
-
+    if (proporcija <= 1) {       // portrait
+        if (proporcija <= 0.7) {lygis--};
         image.width = langelioPlotis * lygis + sideOffset*2;      /*7-10 langeliu ir remelis*/
         image.height = Math.round(image.width / proporcija);
         langeliuSk_W = lygis;
@@ -68,7 +79,9 @@ function isdelioti(image) {
         // }
 
 
-    } else {
+    } else {      // landscape
+
+        if (proporcija >= 1.5) {lygis--};
         image.height = langelioAukstis * lygis + updownOffset*2;
         image.width = Math.round(image.height * proporcija);
         langeliuSk_H = lygis;
@@ -125,60 +138,9 @@ function isdelioti(image) {
 
     if (!zaidimasMode) {
         efektas0s(rinkinys, langeliuSk_H, langeliuSk_W);
-        let infoDiv = document.createElement("div");
-        infoDiv.setAttribute("class", "intro-info");
-        infoDiv.setAttribute("id", "introInfo");
-
-        let infoLead = document.createElement("h2");
-        infoLead.innerHTML = "Pradėti";
-        infoLead.setAttribute("onclick", "zaidimas()");
-        infoDiv.appendChild(infoLead)
-
-
-        let infoSelectLabel = document.createElement("p");
-        infoSelectLabel.innerHTML = "Lygis:";
-        infoDiv.appendChild(infoSelectLabel);
-
-
-        let infoSelect = document.createElement("select");
-        infoSelect.setAttribute("name", "lygis");
-        infoSelect.setAttribute("onchange", "if (this.selectedIndex) {naujasLygis(this)};");
-        infoSelect.setAttribute("onfocus", "this.selectedIndex = -1;");
-
-
-        let infoSelectOpt0 = document.createElement("option");
-        infoSelectOpt0.innerHTML = "pasirinkite ...";
-        infoSelectOpt0.setAttribute("value", -1);
-        infoSelect.appendChild(infoSelectOpt0);
-
-        let infoSelectOpt1 = document.createElement("option");
-        infoSelectOpt1.innerHTML = "vienas-du ir baigta";
-        infoSelectOpt1.setAttribute("value", 5);
-        infoSelect.appendChild(infoSelectOpt1);
-
-        let infoSelectOpt2 = document.createElement("option");
-        infoSelectOpt2.innerHTML = "lengvai";
-        infoSelectOpt2.setAttribute("value", 6);
-        infoSelect.appendChild(infoSelectOpt2);
-
-        let infoSelectOpt3 = document.createElement("option");
-        infoSelectOpt3.innerHTML = "vidutiniškai";
-        infoSelectOpt3.setAttribute("value", 7);
-        infoSelect.appendChild(infoSelectOpt3);
-
-        let infoSelectOpt4 = document.createElement("option");
-        infoSelectOpt4.innerHTML = "sudėtingai";
-        infoSelectOpt4.setAttribute("value", 8);
-        infoSelect.appendChild(infoSelectOpt4);
-
-        let infoSelectOpt5 = document.createElement("option");
-        infoSelectOpt5.innerHTML = "yra ką veikti";
-        infoSelectOpt5.setAttribute("value", 10);
-        infoSelect.appendChild(infoSelectOpt5);
-
-        infoDiv.appendChild(infoSelect);
-        stalokonteineris.appendChild(infoDiv);
+        pradziosLangelis();
     }
+
 
 
     document.getElementById("detales").setAttribute("value", k);
@@ -218,6 +180,8 @@ function isdelioti(image) {
         delione.style.left = sideOffset + "px";
     // }
 
+    // let flyer = document.getElementById("visa-nuotrauka");
+    // flyer.style.top = ((langelioAukstis * langeliuSk_H) + updownOffset*2) + "px";
 
 }
 
@@ -236,20 +200,20 @@ function paruostiStala(rinkinys, image, eilutes, stulpeliai) {
             newDiv.setAttribute("style", "width: " + langelioPlotis + "px; height: " + langelioAukstis + "px");
             delione.appendChild(newDiv);
 
-            if (!zaidimasMode) {
-
-                if (i == 0) {newDiv.addEventListener("click", function(){efektas0(rinkinys, eilutes, stulpeliai);});}
-                if (i == 1) {newDiv.addEventListener("click", function(){efektas1(rinkinys);});}
-
-                if (i == 2) {newDiv.addEventListener("click", function(){efektas2(rinkinys, eilutes, stulpeliai);});}
-
-                if (i == 3) {newDiv.addEventListener("click", function(){efektas3(rinkinys, eilutes, stulpeliai);});}
-
-                if (i == sk-1) {newDiv.addEventListener("click", function(){zaidimas()});}
-            }
+            // if (!zaidimasMode) {
+            //
+            //     if (i == 0) {newDiv.addEventListener("click", function(){efektas0(rinkinys, eilutes, stulpeliai);});}
+            //     if (i == 1) {newDiv.addEventListener("click", function(){efektas1(rinkinys);});}
+            //
+            //     if (i == 2) {newDiv.addEventListener("click", function(){efektas2(rinkinys, eilutes, stulpeliai);});}
+            //
+            //     if (i == 3) {newDiv.addEventListener("click", function(){efektas3(rinkinys, eilutes, stulpeliai);});}
+            //
+            //     if (i == sk-1) {newDiv.addEventListener("click", function(){zaidimas()});}
+            // }
 
         }
-        document.getElementById('langelis0')
+        // document.getElementById('langelis0')
 }
 
 
@@ -289,25 +253,7 @@ function pradzia() {
         anc.appendChild(thumbnail_image);
     }
 
-    let footerContainer = document.createElement("div");
-    footerContainer.classList.add("container");
-    let footerInfo = document.createElement("div");
-    footerInfo.classList.add("footer-info");
-    let footerUl = document.createElement("ul");
-    let footerLi1 = document.createElement("li");
-    footerLi1.innerHTML = "&copy; L. D., 2018. Nuotraukos: <em>fotolia.com</em>";
-    let footerLi2 = document.createElement("li");
-    let footerLi2a = document.createElement("a");
-    footerLi2a.innerHTML = "Vasario 16-osios dėlionė";
-    footerLi2a.setAttribute("href", "sudeliok-lietuva.html");
-    footerLi2.appendChild(footerLi2a);
-    footerUl.appendChild(footerLi1);
-    footerUl.appendChild(footerLi2);
-    footerInfo.appendChild(footerUl);
-    footerContainer.appendChild(footerInfo);
-    document.getElementById("footer").appendChild(footerContainer);
-
-
+        footer();
 
 
 }
@@ -415,6 +361,7 @@ function zaidimas() {
         image.onload = function(){
             isdelioti(image);
         }
+
 }
 
 function originalas() {

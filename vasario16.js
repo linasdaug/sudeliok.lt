@@ -2,7 +2,7 @@
 function pradziaLietuva() {
 
     let puslapis = document.getElementById("puslapis");   /* istrinam viska is puslapio ir pakraunam pasirinkta turini*/
-    let footerInfo = document.getElementById("footerInfo");
+    // let footerInfo = document.getElementById("footerInfo");
 
     imagePaths = collectionLT;
     lygis = 7;
@@ -40,5 +40,6 @@ function pradziaLietuva() {
         anc.appendChild(thumbnail_image);
     }
 
+    footerLt();
 
 }
