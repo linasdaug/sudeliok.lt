@@ -9,8 +9,17 @@ let collectionLT = [
     "img/lt/trakai.jpg",
     "img/lt/kaunas.jpg",
     "img/lt/fanes.jpg"];
-    
-let collection = ["img/neuschwanstein.jpg", "img/venecija.jpg", "img/drasa.jpg", "img/katinas.jpg", "img/ramybe.jpg", "img/siela.jpg", "img/tajmahal.jpg", "img/geisha.jpg"];
+
+let collection = [
+    "img/neuschwanstein.jpg",
+    "img/venecija.jpg",
+    "img/drasa.jpg",
+    "img/katinas.jpg",
+    "img/ramybe.jpg",
+    "img/siela.jpg",
+    "img/tajmahal.jpg",
+    "img/geisha.jpg"];
+
 let imagePaths = collection;
 let currentImage = 0;
 let int = [];
@@ -55,8 +64,8 @@ function isdelioti(image) {
 
 
     if (proporcija <= 1) {       // portrait
-        if (proporcija <= 0.7) {lygis--};
-        image.width = langelioPlotis * lygis + sideOffset*2;      /*7-10 langeliu ir remelis*/
+
+        image.width = langelioPlotis * lygis + sideOffset*2;      /*6-10 langeliu ir remelis*/
         image.height = Math.round(image.width / proporcija);
         langeliuSk_W = lygis;
         langeliuSk_H = Math.floor(image.height / langelioAukstis);
@@ -81,7 +90,7 @@ function isdelioti(image) {
 
     } else {      // landscape
 
-        if (proporcija >= 1.5) {lygis--};
+        // if (proporcija >= 1.5) {lygis--};
         image.height = langelioAukstis * lygis + updownOffset*2;
         image.width = Math.round(image.height * proporcija);
         langeliuSk_H = lygis;
@@ -172,7 +181,10 @@ function isdelioti(image) {
 
     darboStalas.style.maxHeight = maxHeight + "px";
     darboStalas.style.minHeight = langelioAukstis * 2 + 10 + "px";
-    darboStalas.style.overflow = "auto";
+
+    if (maxHeight < 400) {
+        darboStalas.style.overflow = "auto";
+    }
 
 
     // if (zaidimasMode) {
@@ -219,7 +231,10 @@ function paruostiStala(rinkinys, image, eilutes, stulpeliai) {
 
 function pradzia() {
 
+    lygis=10;
     let puslapis = document.getElementById("puslapis");   /* istrinam viska is puslapio ir pakraunam pasirinkta turini*/
+    let body = document.getElementsByTagName("BODY")[0];
+    body.style.background = "url('img/fonelis.jpg') repeat;"
 
     while (puslapis.firstChild) {
         puslapis.removeChild(puslapis.firstChild);
@@ -253,6 +268,36 @@ function pradzia() {
         anc.appendChild(thumbnail_image);
     }
 
+        let thumbnailInput = document.createElement("div");
+        thumbnailInput.classList.add("titulinis-thumbnail");
+        thumbnailInput.classList.add("input-thumbnail");
+
+
+        let inputImg = document.createElement("img");
+        inputImg.setAttribute("alt", "Įkelkite savo dėlionę");
+        inputImg.setAttribute("id", "ownImg");
+        thumbnailInput.appendChild(inputImg);
+        listSection.appendChild(thumbnailInput);
+
+        let feedback = document.createElement("div");
+        feedback.setAttribute("id", "feedback");
+        feedback.setAttribute("style", "color:red");
+        thumbnailInput.appendChild(feedback);
+
+        let imgInput = document.createElement("input");
+        imgInput.setAttribute("id", "uploadImage");
+        imgInput.setAttribute("type", "file");
+        imgInput.setAttribute("onchange", "ss(this)");
+        imgInput.setAttribute("style", "display:none");
+        thumbnailInput.appendChild(imgInput);
+
+        let inputButton = document.createElement("button");
+        inputButton.setAttribute("class", "file-upload-button");
+        inputButton.setAttribute("onclick", "document.getElementById('uploadImage').click()");
+        inputButton.innerHTML = "Pasirinkti";
+        thumbnailInput.appendChild(inputButton);
+
+
         footer();
 
 
@@ -273,11 +318,7 @@ function intro(x) {
 
     let grizti = document.createElement("a");
     grizti.innerHTML = "Grįžti &#8624;";
-    if (imagePaths == collection) {
-        grizti.setAttribute("onclick", "pradzia()");
-    } else {
-        grizti.setAttribute("onclick", "pradziaLietuva()");
-    }
+    grizti.setAttribute("onclick", "grizimas()");
     grizti.setAttribute("class", "grizti");
     puslapis.appendChild(grizti);
 
@@ -320,6 +361,7 @@ function intro(x) {
     let image = new Image();
     image.src = imagePaths[currentImage];
 
+    lygis = 10;
 
     image.onload = function(){
         isdelioti(image);
@@ -373,6 +415,28 @@ function originalas() {
         origNuoroda.innerHTML = "Paslėpti originalą";
     } else {
         origNuoroda.innerHTML = "Parodyti originalą";
+    }
+
+}
+
+function grizimas() {
+
+    let footer = document.getElementById("footer");
+    while (footer.firstChild) {
+        footer.removeChild(footer.firstChild);
+    }
+
+    lygis = 10;
+    langelioPlotis = 60;
+    langelioAukstis = 60;
+    sideOffset = 0;  /*remelio plotis sonuose*/
+    updownOffset = 0;  /*remelio plotis virsuje ir apacioje*/
+
+
+    if (imagePaths == collection) {
+        pradzia();
+    } else {
+        pradziaLietuva();
     }
 
 }
