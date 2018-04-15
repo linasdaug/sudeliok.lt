@@ -1,11 +1,14 @@
 
 function pradziaLietuva() {
 
+    let body = document.getElementsByTagName("BODY")[0];
+    body.style.background = "url('img/fonelisLt.jpg') repeat";
+
     let puslapis = document.getElementById("puslapis");   /* istrinam viska is puslapio ir pakraunam pasirinkta turini*/
     // let footerInfo = document.getElementById("footerInfo");
 
     imagePaths = collectionLT;
-    lygis = 7;
+    lygis = 10;
 
     while (puslapis.firstChild) {
         puslapis.removeChild(puslapis.firstChild);

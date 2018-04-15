@@ -16,6 +16,7 @@ let collection = [
     "img/drasa.jpg",
     "img/katinas.jpg",
     "img/ramybe.jpg",
+    "img/laivai.jpg",
     "img/siela.jpg",
     "img/tajmahal.jpg",
     "img/geisha.jpg"];
@@ -246,7 +247,11 @@ function pradzia() {
     container.classList.add("container");
     let titulinisHeadingText = document.createElement("h1");
     titulinisHeadingText.innerHTML = "Sudėliok sau nuotaiką";
+    let titulinisHeadingSubtext = document.createElement("a");
+    titulinisHeadingSubtext.setAttribute("href", "#ownImg");
+    titulinisHeadingSubtext.innerHTML = "Pasirink dėlionę arba įkelk savo"
     container.appendChild(titulinisHeadingText);
+    container.appendChild(titulinisHeadingSubtext);
     header.appendChild(container);
     puslapis.appendChild(header);
     let listSection = document.createElement("div");
@@ -274,7 +279,7 @@ function pradzia() {
 
 
         let inputImg = document.createElement("img");
-        inputImg.setAttribute("alt", "Įkelkite savo dėlionę");
+        inputImg.setAttribute("alt", "Įkelk savo dėlionę");
         inputImg.setAttribute("id", "ownImg");
         thumbnailInput.appendChild(inputImg);
         listSection.appendChild(thumbnailInput);

@@ -28,17 +28,24 @@ ul {
     text-align: center;
 }
 
-.titulinis-heading h1 {
+.titulinis-heading h1, a {
     color: grey;
+}
+
+.titulinis-heading {
     padding: 25px;
 }
 
 .titulinis-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: column wrap; /* Shorthand – you could use ‘flex-direction: column’ and ‘flex-wrap: wrap’ instead */
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 150vh;
+    /* flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: flex-start; */
 }
 
 .titulinis-thumbnail {
@@ -46,7 +53,7 @@ ul {
     text-align: center;
     color: grey;
     box-shadow: 2px 2px 2px grey;
-    margin: 25px;
+    margin: 10px;
     cursor: pointer;
 }
 
@@ -221,7 +228,7 @@ select option:active{
 .file-upload-button {
     width: 100px;
     height: 30px;
-    background-color: beige;
+    background-color: antiquewhite;
     color: grey;
 }
 @media only screen and (max-width: 600px) {

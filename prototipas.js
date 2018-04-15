@@ -58,10 +58,10 @@ Detale.prototype.nupiesti = function (image, ctx, langelioPlotis, langelioAuksti
     let j = this.koordY;
     let resize = this.resize;
     let tempCanvas = document.createElement("canvas");
-    tempCanvas.width = langelioPlotis + 16;  /* "liezuvelio" issikisimas x 2*/
-    tempCanvas.height = langelioAukstis + 16;
+    tempCanvas.width = langelioPlotis + 20;  /* "liezuvelio" issikisimas x 2*/
+    tempCanvas.height = langelioAukstis + 20;
     let tempCtx = tempCanvas.getContext('2d');
-    tempCtx.drawImage(image, Math.round(langelioPlotis*j*resize), Math.round(langelioAukstis*i*resize), Math.round(this.atvaizdas.width*resize), Math.round(this.atvaizdas.height*resize), 0, 0, this.atvaizdas.width, this.atvaizdas.height);
+    tempCtx.drawImage(image, 4+Math.round(langelioPlotis*j*resize), 4+Math.round(langelioAukstis*i*resize), Math.round(this.atvaizdas.width*resize), Math.round(this.atvaizdas.height*resize), 0, 0, this.atvaizdas.width, this.atvaizdas.height);
     let pattern = ctx.createPattern(tempCanvas, 'repeat');
     ctx.fillStyle = pattern;
 
